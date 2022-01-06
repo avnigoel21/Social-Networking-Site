@@ -17,12 +17,10 @@ router.put("/post/:postId" , requireSignin, postController.isPoster ,  postContr
 router.delete("/post/:postId" , requireSignin, postController.isPoster ,  postController.deletePost);
 
 
-
 //any route containing : userId , our app will first execute userById
 router.param("userId" , userById);
 //any route containing : postId , our app will first execute postById
 router.param("postId" , postById);
-
 
 
 module.exports = router;
