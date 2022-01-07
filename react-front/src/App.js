@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import MainRouter from './core/MainRouter';
+import MainRouter from './MainRouter';
 
 const App = () => (
   <BrowserRouter>
