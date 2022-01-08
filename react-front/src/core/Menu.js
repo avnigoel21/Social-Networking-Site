@@ -1,5 +1,5 @@
 import React from 'react';
-import {isAuthenticated , signout} from "../auth/index"
+import { isAuthenticated, signout } from "../auth/index"
 import { Link, withRouter } from "react-router-dom"
 
 const isActive = (history, path) => {
@@ -11,21 +11,29 @@ const isActive = (history, path) => {
 const Menu = ({ history }) => (
     <div>
         <ul className="nav nav-tabs bg-primary">
-            <li className="nav-item">
+            <li className="nav-item text-dark">
                 <Link
-                    className='nav-link'
+                    className='nav-link text-dark'
                     style={isActive(history, "/")}
                     to="/">Home</Link>
             </li>
 
+            <li className="nav-item text-dark">
+                <Link
+                    className='nav-link text-dark'
+                    style={isActive(history, "/users")}
+                    to="/users">Users</Link>
+            </li>
+
+
             {!isAuthenticated() && (
                 <>
-                    <li className="nav-item">
-                        <Link className='nav-link'
+                    <li className="nav-item text-dark">
+                        <Link className='nav-link text-dark'
                             style={isActive(history, "/signin")}
                             to="/signin">Sign In</Link>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item text-dark">
                         <Link className='nav-link'
                             style={isActive(history, "/signup")}
                             to="/signup">Sign Up</Link>
@@ -36,8 +44,8 @@ const Menu = ({ history }) => (
 
             {isAuthenticated() && (
                 <>
-                    <li className="nav-item">
-                        <a className='nav-link'
+                    <li className="nav-item text-dark">
+                        <a className='nav-link text-dark'
                             style={
                                 (isActive(history, "/signup"),
                                     { cursor: "pointer", color: "#fff" })
@@ -47,10 +55,12 @@ const Menu = ({ history }) => (
                             Sign Out</a>
                     </li>
                     <li className="nav-item">
-                        <a className='nav-link'
-                        >
-                            {isAuthenticated().user.name}
-                        </a>
+                        <Link 
+                            className='nav-link text-dark' 
+                            to={`/user/${isAuthenticated().user._id}`} 
+                            style={isActive(history , `user/${isAuthenticated().user._id}`)}>
+                            {`${isAuthenticated().user.name}'s profile`}
+                        </Link>
                     </li>
                 </>
             )}
