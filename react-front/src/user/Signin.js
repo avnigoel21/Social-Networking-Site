@@ -92,6 +92,7 @@ class Signin extends Component {
                 {loading ? <div className='"jumbotron text-centre'>
                     <h2>Loading...</h2>
                 </div> : ("")}
+                
                 {this.signinForm(email, password)}
 
             </div>
